@@ -21,10 +21,11 @@ pipeline {
                 }
             }
         }
-        stage('Sonarqube analysis') {
+        stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('ns-sonarqube')
-                sh 'mvn clean package sonar:sonar'
+                withSonarQubeEnv('ns-sonarqube') {
+                    sh 'mvn clean package sonar:sonar'
+                }
             }
         }
         stage('Deliver') {
